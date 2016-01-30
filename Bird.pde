@@ -1,8 +1,5 @@
 void bird()
 { 
-  int posx = width/2;
-  int posy = height/2;
-
   stroke(0);
   
   //body
