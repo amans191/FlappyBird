@@ -1,19 +1,25 @@
 void bird()
-{
-  
-  
+{ 
   stroke(0);
+  //body
   fill(255, 215 , 0);
-  ellipse(50,50,60,50);
+  ellipse(posx, posy, 60, 50);
   
+  //white eye
   fill(255);
-  ellipse(65, 35, 25, 25);
+  ellipse(posx + 15, posy - 15, 25, 25);
   
+  //black eye ball
   fill(0);
-  ellipse(68, 35, 5, 5);
+  ellipse(posx + 18, posy - 15, 5, 5);
   
+  //beak
   fill(255, 0 , 100);
-  ellipse(80, 55, 30, 15);
+  ellipse(posx + 30, posy + 5, 30, 15);
+  
+  //wing
+  fill(255, 150, 0);
+  ellipse(posx - 30, posy, 30, 20);
   
   fill(255);
   
