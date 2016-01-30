@@ -1,10 +1,11 @@
 void setup()
 {
   size(550,750);
+  y =width/2;
+  
 }
+int y;
 
-int posx = width/2;
-int posy = height/2;
 
 void draw()
 {
@@ -13,9 +14,10 @@ void draw()
   
   bird();
   
-  posy += 5;
+  ellipse(width/2, y, 10, 10);
+  y++;
   if (mousePressed)
   {
-    posy-=20;
+    y-=20;
   } 
 }
