@@ -3,8 +3,8 @@ void setup()
   size(550,750);
 }
 
-int posx = width/2;
-int posy = height/2;
+int posx = 275;
+int posy = 375;
 
 void draw()
 {
@@ -16,6 +16,6 @@ void draw()
   posy += 5;
   if (mousePressed)
   {
-    posy-=20;
+    posy -= 20;
   } 
 }
