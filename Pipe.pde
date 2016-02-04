@@ -5,15 +5,26 @@ class Pipe
   int gap;
   int yj;
   
-  void render()
+  //constructor
+  Pipe()
   {
     xi = width;
     pipeWidth = 50;
     gap = 100;
-    yj = (int)random(500);
+    yj = (int)random(0, 500);
+  }
+  
+  void render()
+  {
+    
     
     stroke(255);
     fill(0 , 255, 0);
-    rect(xi, xi + gap, gap, yj);
+    rect(xi, xi + pipeWidth, pipeWidth, yj);
+  }
+  
+  void update()
+  {
+    xi -= 5;
   }
 }

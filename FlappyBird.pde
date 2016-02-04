@@ -26,4 +26,5 @@ void draw()
   } 
   
   pipes.render();
+  pipes.update();
 }
