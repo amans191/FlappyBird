@@ -30,7 +30,7 @@ void draw()
   pipes.render();
   pipes.update();
   
-  if( frameCount %120 == 0 )
+  if( frameCount % 120 == 0 )
   {
     Pipe newpipe = new Pipe();
     blah.add(newpipe);

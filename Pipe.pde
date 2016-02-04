@@ -9,9 +9,9 @@ class Pipe
   //constructor
   Pipe()
   {
-    xi = width;
+    xi = 0;
     yi = width;
-    pipeWidth = 50;
+    pipeWidth = 75;
     gap = 100;
     yj = (int)random(0, 500);
   }
@@ -20,7 +20,7 @@ class Pipe
   {
     stroke(255);
     fill(0 , 255, 0);
-    rect(yi, xi + pipeWidth, pipeWidth, yj);
+    rect(yi, xi, pipeWidth, yj);
   }
   
   void update()
