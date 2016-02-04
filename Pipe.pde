@@ -1,6 +1,10 @@
-void Pipe
+void Pipe()
 {
+  int xy = height;
+  int pipeWidth = 100;
+  
   stroke(255);
   fill(0 , 255, 0);
-  rect(height - random(), );
+  //coloumn 1
+  rect(xy, random(500,0) ,xy + pipeWidth, random(500,0));
 }

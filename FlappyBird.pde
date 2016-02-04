@@ -1,10 +1,13 @@
 void setup()
 {
   size(550,750);
+  
+  posx = width/3;
+  posy = height/2;
 }
 
-int posx = 275;
-int posy = 375;
+int posx;
+int posy;
 
 void draw()
 {
@@ -18,4 +21,6 @@ void draw()
   {
     posy -= 20;
   } 
+  
+  Pipe();
 }
