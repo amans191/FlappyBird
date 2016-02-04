@@ -1,6 +1,7 @@
 class Pipe
 {
   int xi;
+  int yi;
   int pipeWidth;
   int gap;
   int yj;
@@ -9,6 +10,7 @@ class Pipe
   Pipe()
   {
     xi = width;
+    yi = width;
     pipeWidth = 50;
     gap = 100;
     yj = (int)random(0, 500);
@@ -20,11 +22,11 @@ class Pipe
     
     stroke(255);
     fill(0 , 255, 0);
-    rect(xi, xi + pipeWidth, pipeWidth, yj);
+    rect(yi, xi + pipeWidth, pipeWidth, yj);
   }
   
   void update()
   {
-    xi -= 5;
+    yi -= 5;
   }
 }
