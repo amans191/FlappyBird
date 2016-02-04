@@ -18,8 +18,6 @@ class Pipe
   
   void render()
   {
-    
-    
     stroke(255);
     fill(0 , 255, 0);
     rect(yi, xi + pipeWidth, pipeWidth, yj);

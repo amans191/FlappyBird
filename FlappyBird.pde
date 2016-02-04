@@ -1,3 +1,5 @@
+ArrayList<Pipe> blah = new ArrayList<Pipe>();
+
 void setup()
 {
   size(550,750);
@@ -27,4 +29,17 @@ void draw()
   
   pipes.render();
   pipes.update();
+  
+  if( frameCount %120 == 0 )
+  {
+    Pipe newpipe = new Pipe();
+    blah.add(newpipe);
+  }
+  
+  for( int i = 0; i < blah.size(); ++i)
+  {
+    blah.get(i).render();
+    blah.get(i).update();
+  }
+    
 }
