@@ -24,7 +24,7 @@ void draw()
   posy += 5;
   if (mousePressed)
   {
-    posy -= 20;
+    posy -= 15;
   } 
   
   pipes.render();

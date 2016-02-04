@@ -5,6 +5,7 @@ class Pipe
   int pipeWidth;
   int gap;
   int yj;
+  int bot;
   
   //constructor
   Pipe()
@@ -12,8 +13,9 @@ class Pipe
     xi = 0;
     yi = width;
     pipeWidth = 75;
-    gap = 100;
-    yj = (int)random(0, 450);
+    gap = 250;
+    yj = (int)random(50, 450);
+    bot = - (height - (yj + gap));
   }
   
   void render()
@@ -25,7 +27,7 @@ class Pipe
     rect(yi, xi, pipeWidth, yj);
     
     //bottom pipe
-    rect(yi, height, pipeWidth, height - (yj + gap));
+    rect(yi, height, pipeWidth, bot);
   }
   
   void update()
