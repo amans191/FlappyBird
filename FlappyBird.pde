@@ -4,10 +4,13 @@ void setup()
   
   posx = width/3;
   posy = height/2;
+  pipes = new Pipe();
 }
 
 int posx;
 int posy;
+
+Pipe pipes;
 
 void draw()
 {
@@ -22,4 +25,5 @@ void draw()
     posy -= 20;
   } 
   
+  pipes.render();
 }
