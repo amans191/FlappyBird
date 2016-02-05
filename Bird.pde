@@ -1,5 +1,5 @@
 class Bird
-{
+{ 
   void birdRender()
   {
     stroke(0);
@@ -32,5 +32,7 @@ class Bird
     {
       posy -= 20;
     } 
+    
+    
   }
 }

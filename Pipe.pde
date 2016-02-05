@@ -1,4 +1,4 @@
-class Pipe
+abstract class Pipe
 {
   int xi;
   int yi;
