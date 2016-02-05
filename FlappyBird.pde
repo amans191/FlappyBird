@@ -48,9 +48,14 @@ void draw()
     
     if( blahblah instanceof Pipe)
     {
-      if( dist(posx,posy,blahblah.yi,blahblah.yj) <= 50 )
+      if( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
       {
           blah.remove(blahblah);
+      }
+      
+      if( posx >= blahblah.yi && posy >= height - blahblah.yj + blahblah.gap && posx <= blahblah.yi + blahblah.pipeWidth || posy >= height )
+      {
+         blah.remove(blahblah);
       }
       
       /*if( posy <= blah.get(i).yj  || posy >= (blah.get(i).bot) )

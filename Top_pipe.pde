@@ -9,7 +9,7 @@ class Top_pipe extends Pipe
       rect(yi, xi, pipeWidth, yj);
      
       //bottom pipe
-      rect(yi, height, pipeWidth, - (height - (yj + gap)));
+      rect(yi, height, pipeWidth, bot);
   }
   
   void update()
