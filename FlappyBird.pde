@@ -23,14 +23,6 @@ void draw()
   background(135, 206, 250);
   fill(255);
   
-  //bird();
-  
-  /*posy += 5;
-  if (mousePressed)
-  {
-    posy -= 20;
-  } */
-  
   birds.birdRender();
   birds.birdUpdate();
   
@@ -49,9 +41,28 @@ void draw()
     blah.get(i).update();
   }
   
+  for(int i = 0 ; i < blah.size() ; ++i)
+  {
+    if( blah.get(i).xi > posx )
+        blah.remove(i);
+        
+    if( posy <= blah.get(i).yj  || posy >= (blah.get(i).bot) )
+    {
+      stop();
+    }
+    
+  }
+  
   if(posy < height || posy > height)
   {
     text("End Game", 100, 100);
   }
+  
+  
     
+}
+
+void stop()
+{
+  println("ha");
 }
