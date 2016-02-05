@@ -7,6 +7,8 @@ void setup()
   posx = width/3;
   posy = height/2;
   pipes = new Pipe();
+  
+  birds = new Bird();
 }
 
 int posx;
@@ -14,18 +16,23 @@ int posy;
 
 Pipe pipes;
 
+Bird birds;
+
 void draw()
 {
-  background(0);
+  background(135, 206, 250);
   fill(255);
   
-  bird();
+  //bird();
   
-  posy += 5;
+  /*posy += 5;
   if (mousePressed)
   {
-    posy -= 15;
-  } 
+    posy -= 20;
+  } */
+  
+  birds.birdRender();
+  birds.birdUpdate();
   
   pipes.render();
   pipes.update();
@@ -40,6 +47,11 @@ void draw()
   {
     blah.get(i).render();
     blah.get(i).update();
+  }
+  
+  if(posy < height || posy > height)
+  {
+    text("End Game", 100, 100);
   }
     
 }

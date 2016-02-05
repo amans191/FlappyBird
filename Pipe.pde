@@ -34,4 +34,9 @@ class Pipe
   {
     yi -= 5;
   }
+  
+  void checkCollision()
+  {
+    
+  }
 }
