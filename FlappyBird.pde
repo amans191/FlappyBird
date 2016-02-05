@@ -31,9 +31,9 @@ void draw()
   if( frameCount % 120 == 0 )
   {
     Pipe newtoppipe = new Top_pipe();
-    //Pipe newbotpipe = new Bottom_pipe();
+
     blah.add(newtoppipe);
-    //blah.add(newbotpipe);
+
   }
   
   for( int i = 0; i < blah.size(); ++i)
