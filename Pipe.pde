@@ -18,25 +18,7 @@ abstract class Pipe
     bot = - (height - (yj + gap));
   }
   
-  void render()
-  {
-    stroke(255);
-    fill(0 , 255, 0);
-    
-    //top pipe
-    rect(yi, xi, pipeWidth, yj);
-    
-    //bottom pipe
-    rect(yi, height, pipeWidth, bot);
-  }
+  abstract void render();
   
-  void update()
-  {
-    yi -= 5;
-  }
-  
-  void checkCollision()
-  {
-    
-  }
+  abstract void update();
 }
