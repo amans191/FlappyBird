@@ -8,7 +8,6 @@ void setup()
   
   posx = width/3;
   posy = height/2;
-  pipes = new Pipe();
   
   birds = new Bird();
 }
@@ -17,6 +16,7 @@ int posx;
 int posy;
 
 Pipe pipes;
+
 
 Bird birds;
 
@@ -28,13 +28,12 @@ void draw()
   birds.birdRender();
   birds.birdUpdate();
   
-  pipes.render();
-  pipes.update();
-  
   if( frameCount % 120 == 0 )
   {
-    Pipe newpipe = new Pipe();
-    blah.add(newpipe);
+    Pipe newtoppipe = new Top_pipe();
+    //Pipe newbotpipe = new Bottom_pipe();
+    blah.add(newtoppipe);
+    //blah.add(newbotpipe);
   }
   
   for( int i = 0; i < blah.size(); ++i)
