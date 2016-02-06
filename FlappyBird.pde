@@ -51,11 +51,13 @@ void draw()
       if( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
       {
           blah.remove(blahblah);
+          println("blah");
       }
       
-      if( posx >= blahblah.yi && posy >= height - blahblah.yj + blahblah.gap && posx <= blahblah.yi + blahblah.pipeWidth || posy >= height )
+      if( posx >= blahblah.yi && posy >= height - blahblah.bot + blahblah.gap && posx <= blahblah.yi + blahblah.pipeWidth || posy >= height )
       {
          blah.remove(blahblah);
+         println("blah");
       }
       
       /*if( posy <= blah.get(i).yj  || posy >= (blah.get(i).bot) )
