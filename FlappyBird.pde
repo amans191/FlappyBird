@@ -54,7 +54,7 @@ void draw()
           println("blah");
       }
       
-      if( posx >= blahblah.yi && posy >= height - blahblah.bot + blahblah.gap && posx <= blahblah.yi + blahblah.pipeWidth || posy >= height )
+      if( posx >= blahblah.yi && posy <= blahblah.bot && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
       {
          blah.remove(blahblah);
          println("blah");
@@ -67,21 +67,29 @@ void draw()
     }
   }
   
+  points();
+  
   /*if(posy < height || posy > height)
   {
     text("End Game", 100, 100);
   }*/
   
+  
+    
+}
+
+void points()
+{
   int score = 0;
   
   for(int i = 0 ; i < blah.size() ; i++)
   {
-    if( blah.get(i).yi == posx )
+    Pipe pipeScore = blah.get(i);
+    if( pipeScore.points(posx) )
     {
       score++;
     }
     stroke(0);
     text(""+score, width/2, 600);
   }
-    
 }
