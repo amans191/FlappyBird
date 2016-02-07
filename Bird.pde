@@ -31,8 +31,16 @@ class Bird
     if (mousePressed)
     {
       posy -= 20;
-    } 
+    }
+  }
+  
+  void birdEnd()
+  {
+    posy += 2;
     
-    
+    if(posy > (500))
+    {
+      posy -= 20;
+    }
   }
 }
