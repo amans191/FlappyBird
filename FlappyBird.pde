@@ -19,20 +19,20 @@ void setup()
   
   gui = new ControlP5(this);
   
-  gui.addTextfield("Name")
-    .setPosition(width/4,height/3)
-    .setSize(250,100)
-    .setFont(font)
-    .setFocus(true)
-    .setColor(color(255,0,0))
-    ;
+  //gui.addTextfield("Name")
+  //  .setPosition(width/4,height/3)
+  //  .setSize(250,100)
+  //  .setFont(font)
+  //  .setFocus(true)
+  //  .setColor(color(255,0,0))
+  //  ;
     
-  gui.addButton("Play Game!")
-   .setPosition(width/2,height/2)
-   .setSize(100,100)
-   //set the way it is activated : RELEASE the mouseboutton or PRESS it
-   .activateBy(ControlP5.RELEASE);
-   ;
+  //gui.addButton("Play Game!")
+  // .setPosition(width/2,height/2)
+  // .setSize(100,100)
+  // //set the way it is activated : RELEASE the mouseboutton or PRESS it
+  // .activateBy(ControlP5.RELEASE);
+  // ;
     
    gamestate = 0;
 }
@@ -57,7 +57,8 @@ void draw()
   //text(gui.get(Textfield.class,"Name").getText(), 360,130);
   //text(textValue, 360,180);
   
-  controlEvent();
+  if(mousePressed)
+    gamestate = 1;
   
   if (gamestate == 1)
   {
@@ -91,16 +92,12 @@ void draw()
             println("blah");
         }
       
-        if( posx >= blahblah.yi && posy <= blahblah.bot && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
+        if( posx >= blahblah.yi && posy < blahblah.bot && posx <= blahblah.yi + blahblah.pipeWidth || posy > height - blahblah.bot )
         {
-           blah.remove(blahblah);
+           //blah.remove(blahblah);
+           stop();
            println("blah");
         }
-      
-        /*if( posy <= blah.get(i).yj  || posy >= (blah.get(i).bot) )
-        {
-          stop();
-        }*/
       }
     }
   
@@ -128,13 +125,4 @@ void points()
     stroke(0);
     text(""+score, width/2, 600);
   }
-}
-
-//void PressMe()
-//{
-//  gamestate = 1;
-//}
-
-public void controlEvent() {
-gamestate = 1;
 }
