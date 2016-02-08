@@ -88,22 +88,13 @@ void draw()
       {
         if( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
         {
-            //blah.remove(blahblah);
             EndScreen();
             stop();
-            println("blah");
         }
-        //else
-        //{
-        //  score = score + 1;
-        //}
       
         if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
-           //blah.remove(blahblah);
            stop();
-           println("blah");
-           score++;
         }
       }
     }
@@ -111,10 +102,6 @@ void draw()
   
     points();
     
-    /*if(posy < height || posy > height)
-    {
-      text("End Game", 100, 100);
-    }*/
   }//end gamestate == 1 if    
 }
 
@@ -125,11 +112,13 @@ void points()
   for(int i = 0 ; i < blah.size() ; i++)
   {
     Pipe pipeScore = blah.get(i);
-    if( posy >= pipeScore.yj && posy <= (pipeScore.gap +pipeScore.yj) && posx != pipeScore.yi)
+   
+    if( posx > pipeScore.yi && posx < ( pipeScore.yi + pipeScore.pipeWidth ))
     {
-      score++;
+      score = score + 1;
     }
-    stroke(0);
-    text(""+score, width/2, 600);
+    fill(0);
+    //divide by 15 because the brd get 15 points everytime it is in the gap
+    text(""+score/15, width/2, 600);
   }
 }
