@@ -92,7 +92,7 @@ void draw()
             println("blah");
         }
       
-        if( posx >= blahblah.yi && posy < blahblah.bot && posx <= blahblah.yi + blahblah.pipeWidth || posy > height - blahblah.bot )
+        if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height - blahblah.bot )
         {
            //blah.remove(blahblah);
            stop();
