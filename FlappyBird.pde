@@ -15,17 +15,20 @@ void setup()
   
   birds = new Bird();
   
-  PFont font = createFont("arial", 48);
+  high_score = 0;
+  load_in_score(); // loads score from txt file
+  
+  //PFont font = createFont("arial", 48);
   
   gui = new ControlP5(this);
   
   //gui.addTextfield("Name")
-  // .setPosition(width/4,height/3)
-  // .setSize(250,100)
-  // .setFont(font)
-  // .setFocus(true)
-  // .setColor(color(255,0,0))
-  // ;
+  //.setPosition(width/4,height/3)
+  //.setSize(250,100)
+  //.setFont(font)
+  //.setFocus(true)
+  //.setColor(color(255,0,0))
+  //;
     
   //gui.addButton("Play Game!")
   //.setPosition(width/2,height/2)
@@ -34,10 +37,13 @@ void setup()
   //.activateBy(ControlP5.RELEASE);
   //;
     
-   gamestate = 0;
+   gamestate = 1;
 }
 
-  int score = 0;
+PrintWriter output;
+int high_score;
+
+int score = 0;
   
 String textValue = "";
 
@@ -59,8 +65,13 @@ void draw()
   //text(gui.get(Textfield.class,"Name").getText(), 360,130);
   //text(textValue, 360,180);
   
-  if(mousePressed)
-    gamestate = 1;
+  if (gamestate == 0)
+  {
+    //name();
+  }
+  
+  //if(mousePressed)
+  //  gamestate = 1;
   
   if (gamestate == 1)
   {
@@ -107,8 +118,6 @@ void draw()
 
 void points()
 {
-
-  
   for(int i = 0 ; i < blah.size() ; i++)
   {
     Pipe pipeScore = blah.get(i);
@@ -121,4 +130,48 @@ void points()
     //divide by 15 because the brd get 15 points everytime it is in the gap
     text(""+score/15, width/2, 600);
   }
+}
+
+//void name()
+//{
+  
+//  PFont font = createFont("arial", 48);
+  
+//  gui.addTextfield("Name")
+//  .setPosition(width/4,height/3)
+//  .setSize(250,100)
+//  .setFont(font)
+//  .setFocus(true)
+//  .setColor(color(255,0,0))
+//  ;
+    
+//  gui.addButton("Play Game!")
+//  .setPosition(width/2,height/2)
+//  .setSize(100,100)
+//  //set the way it is activated : RELEASE the mouseboutton or PRESS it
+//  .activateBy(ControlP5.RELEASE);
+//  ;
+//}
+
+
+void save_score()
+{
+  output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
+  
+  output.println(high_score); // writes high_score to file
+  
+  output.flush(); // Writes the remaining data to the file
+  output.close(); // Finishes the file
+}
+
+void load_in_score()
+{
+  String[] lines = loadStrings("score.txt"); 
+
+  int score = parseInt(lines[0]);
+  
+  if(score > 0)
+  {
+    high_score = score;
+  }    
 }
