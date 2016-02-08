@@ -106,22 +106,29 @@ void draw()
         {
             EndScreen();
             stop();
+            gamestate = 2;
         }
       
         if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
            stop();
+           gamestate = 2;
         }
       }
     }
-    
-  text(high_score, width/2,height/2); // display text
-  text(name, width/3,height/3);
-  
-  
+ 
     points();
     
+    high_score = score;
+    
   }//end gamestate == 1 if    
+  
+  if ( gamestate == 2)
+  {
+    background(100, 100, 100);
+    text(high_score/15, width/2,height/2); // display text
+    //text(name, width/3,height/3);
+  }
 }
 
 //***************************************************************************
@@ -171,6 +178,8 @@ void load_in_score()
       score = parseInt(parts[0]);
       name = parts[1];
   }
+  
+  saveStrings("data/score.txt", lines);
   
   if(score > 0)
   {
