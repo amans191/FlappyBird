@@ -20,23 +20,25 @@ void setup()
   gui = new ControlP5(this);
   
   //gui.addTextfield("Name")
-  //  .setPosition(width/4,height/3)
-  //  .setSize(250,100)
-  //  .setFont(font)
-  //  .setFocus(true)
-  //  .setColor(color(255,0,0))
-  //  ;
+  // .setPosition(width/4,height/3)
+  // .setSize(250,100)
+  // .setFont(font)
+  // .setFocus(true)
+  // .setColor(color(255,0,0))
+  // ;
     
   //gui.addButton("Play Game!")
-  // .setPosition(width/2,height/2)
-  // .setSize(100,100)
-  // //set the way it is activated : RELEASE the mouseboutton or PRESS it
-  // .activateBy(ControlP5.RELEASE);
-  // ;
+  //.setPosition(width/2,height/2)
+  //.setSize(100,100)
+  ////set the way it is activated : RELEASE the mouseboutton or PRESS it
+  //.activateBy(ControlP5.RELEASE);
+  //;
     
    gamestate = 0;
 }
 
+  int score = 0;
+  
 String textValue = "";
 
 int posx;
@@ -86,17 +88,22 @@ void draw()
       {
         if( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
         {
-            blah.remove(blahblah);
+            //blah.remove(blahblah);
             EndScreen();
             stop();
             println("blah");
         }
+        //else
+        //{
+        //  score = score + 1;
+        //}
       
-        if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height - blahblah.bot )
+        if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
            //blah.remove(blahblah);
            stop();
            println("blah");
+           score++;
         }
       }
     }
@@ -113,15 +120,15 @@ void draw()
 
 void points()
 {
-  int score = 0;
+
   
   for(int i = 0 ; i < blah.size() ; i++)
   {
     Pipe pipeScore = blah.get(i);
-    //if( pipeScore.points(posx) )
-    //{
-    //  score++;
-    //}
+    if( posy >= pipeScore.yj && posy <= (pipeScore.gap +pipeScore.yj) && posx != pipeScore.yi)
+    {
+      score++;
+    }
     stroke(0);
     text(""+score, width/2, 600);
   }
