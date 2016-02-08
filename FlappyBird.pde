@@ -40,8 +40,11 @@ void setup()
    gamestate = 1;
 }
 
+//***************************************************************************
+
 PrintWriter output;
 int high_score;
+String name;
 
 int score = 0;
   
@@ -55,6 +58,8 @@ Pipe pipes;
 Bird birds;
 
 int gamestate;
+
+//***************************************************************************
 
 void draw()
 {
@@ -109,12 +114,17 @@ void draw()
         }
       }
     }
+    
+  text(high_score, width/2,height/2); // display text
+  text(name, width/3,height/3);
   
   
     points();
     
   }//end gamestate == 1 if    
 }
+
+//***************************************************************************
 
 void points()
 {
@@ -132,43 +142,35 @@ void points()
   }
 }
 
-//void name()
-//{
-  
-//  PFont font = createFont("arial", 48);
-  
-//  gui.addTextfield("Name")
-//  .setPosition(width/4,height/3)
-//  .setSize(250,100)
-//  .setFont(font)
-//  .setFocus(true)
-//  .setColor(color(255,0,0))
-//  ;
-    
-//  gui.addButton("Play Game!")
-//  .setPosition(width/2,height/2)
-//  .setSize(100,100)
-//  //set the way it is activated : RELEASE the mouseboutton or PRESS it
-//  .activateBy(ControlP5.RELEASE);
-//  ;
-//}
+//***************************************************************************
 
+
+//***************************************************************************
 
 void save_score()
 {
   output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
   
-  output.println(high_score); // writes high_score to file
+  output.println(high_score + "," + name); // writes high_score to file
   
   output.flush(); // Writes the remaining data to the file
   output.close(); // Finishes the file
 }
 
+//***************************************************************************
+
 void load_in_score()
 {
-  String[] lines = loadStrings("score.txt"); 
+  String[] lines = loadStrings("data/score.txt"); 
 
-  int score = parseInt(lines[0]);
+  int score = 0;
+
+  for(int i=0; i < lines.length; i++ )
+  {
+      String[] parts = lines[i].split(",");
+      score = parseInt(parts[0]);
+      name = parts[1];
+  }
   
   if(score > 0)
   {
