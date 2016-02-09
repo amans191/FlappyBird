@@ -80,11 +80,29 @@ void draw()
   {
     background(135, 206, 250);
     
+    //play game option
     fill(255, 0, 0);
     rect(width/4, firstoption, width/2, firstoption/2);
     fill(255);
     textSize(32);
     text("Play Game!", width/4 + 50, firstoption + 50);
+    if(mousePressed)
+    {
+      if(mouseX >= width/4 + 50 && mouseX <= (width - width/4))
+      {
+        if(mouseY >= firstoption && mouseY <= (height - (firstoption + firstoption/2)))
+        {
+          gamestate = 1;
+        }
+      }
+    }
+    
+    //highscore option
+    fill(255, 0, 0);
+    rect(width/4, firstoption + (firstoption/3) * 2, width/2, firstoption/2);
+    fill(255);
+    textSize(32);
+    text("Highscore!", width/4 + firstoption/3, (firstoption * 2));
   }
   
   //if(mousePressed)
