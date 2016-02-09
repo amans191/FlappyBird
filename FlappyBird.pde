@@ -8,8 +8,6 @@ void setup()
 {
   size(550,750);
   
-  //rectMode(CENTER);
-  
   posx = width/3;
   posy = height/2;
   
@@ -39,7 +37,7 @@ void setup()
     
    gamestate = 0;
    
-   endpos = height;
+   endpos = height/4;
 }
 
 //***************************************************************************
@@ -86,6 +84,7 @@ void draw()
     fill(255);
     textSize(32);
     text("Play Game!", width/4 + 50, firstoption + 50);
+    //button to play game
     if(mousePressed)
     {
       if(mouseX >= width/4 + 50 && mouseX <= (width - width/4))
@@ -202,7 +201,7 @@ void load_in_score()
 
   int score = 0;
 
-  for(int i=0; i < lines.length; i++ )
+  for(int i = 0; i < lines.length; i++ )
   {
       String[] parts = lines[i].split(",");
       score = parseInt(parts[0]);

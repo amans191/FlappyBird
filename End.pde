@@ -5,13 +5,7 @@ void EndScreen()
   
   rect(width/4, endpos, width/2, height/2);
   
-  for (int i = 0; i < height/4; i++)
-  {
-    endpos -= 5;
-  }
-  
-  if (endpos == height/4)
-  {
-    stop();
-  }
+  fill(255, 0, 0);
+  stroke(255);
+  rect(width/4 + 10, (height/2), width/2, height/2 );
 }

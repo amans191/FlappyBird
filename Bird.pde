@@ -28,7 +28,7 @@ class Bird
   void birdUpdate()
   {
     posy += 5;
-    if (mousePressed)
+    if (keyPressed)
     {
       posy -= 20;
     }
