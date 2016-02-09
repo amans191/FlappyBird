@@ -13,6 +13,8 @@ void setup()
   
   birds = new Bird();
   
+  ends = new End();
+  
   high_score = 0;
   load_in_score(); // loads score from txt file
   
@@ -58,6 +60,8 @@ int posy;
 Pipe pipes;
 
 Bird birds;
+
+End ends;
 
 int gamestate;
 
@@ -122,15 +126,17 @@ void draw()
       {
         if( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
         {
-            EndScreen();
+            ends.EndScreen();
+            ends.mousePressed();
             stop();
-            //gamestate = 2;
         }
       
         if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
-           stop();
-           gamestate = 2;
+          ends.EndScreen();
+          ends.mousePressed();
+          stop();
+          gamestate = 2;
         }
       }
     }
@@ -213,6 +219,7 @@ void mousePressed()
     gamestate = 1;
   }
   
+  //button to view highscore
   if((mouseX >= width/4) && (mouseX <= (width - width/4)) && (mouseY >= firstoption + (firstoption/3) * 2) && mouseY <= (height - (firstoption + (firstoption/3) * 2)))
   {
     gamestate = 2;
