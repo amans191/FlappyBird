@@ -19,13 +19,32 @@ class End
     posy = height/2;
     
     birds.birdRender();
+    
+    if(keyPressed)
+    {
+      if(key == 's')
+      {
+        gamestate = 0;
+      }
+    }
   }
   
-  void mousePressed()
+  void EndRender()
   {
-   if( (mouseX > width/4 + 10) && (mouseX < width - (width/4 + 10)) && (mouseY > (height - (height/3))) && mouseY > (height - (height/3)) + 50);
-   {
-     gamestate = 0;
-   }
+    if(keyPressed)
+    {
+      if(key == ' ' )
+      {
+        gamestate = 0;
+      }
+    }
   }
+    
+  //void mousePressed()
+  //{
+  // if( (mouseX > width/4 + 10) && (mouseX < width - (width/4 + 10)) && (mouseY > (height - (height/3))) && mouseY > (height - (height/3)) + 50);
+  // {
+  //   gamestate = 0;
+  // }
+  //}
 }

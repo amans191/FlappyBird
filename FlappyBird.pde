@@ -118,6 +118,8 @@ void draw()
       blah.get(i).update();
     }
   
+    ends.EndRender();
+    
     for(int i = blah.size() - 1 ; i >= 0 ; i--)
     {
       Pipe blahblah = blah.get(i);
@@ -127,19 +129,31 @@ void draw()
         if( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
         {
             ends.EndScreen();
-            ends.mousePressed();
+            //ends.EndRender();
+            //ends.mousePressed();
+            
+            if(keyPressed)
+            {
+              if(key == 's')
+              {
+                gamestate = 0;
+              }
+            }
             stop();
         }
       
         if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
           ends.EndScreen();
-          ends.mousePressed();
+          //ends.EndRender();
+          //ends.mousePressed();
           stop();
           gamestate = 2;
         }
       }
     }
+    
+    ends.EndRender();
  
     points();
     
