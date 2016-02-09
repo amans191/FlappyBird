@@ -30,7 +30,12 @@ class Bird
     posy += 5;
     if (keyPressed)
     {
-      posy -= 20;
+      if(key == 'w')
+      {
+        {
+          posy -= 20;
+        }
+      }
     }
   }
 }
