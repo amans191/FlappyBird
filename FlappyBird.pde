@@ -84,17 +84,6 @@ void draw()
     fill(255);
     textSize(32);
     text("Play Game!", width/4 + 50, firstoption + 50);
-    //button to play game
-    if(mousePressed)
-    {
-      if(mouseX >= width/4 + 50 && mouseX <= (width - width/4))
-      {
-        if(mouseY >= firstoption && mouseY <= (height - (firstoption + firstoption/2)))
-        {
-          gamestate = 1;
-        }
-      }
-    }
     
     //highscore option
     fill(255, 0, 0);
@@ -214,4 +203,19 @@ void load_in_score()
   {
     high_score = score;
   }    
+}
+
+void mousePressed()
+{
+  //button to play game
+  if((mouseX >= width/4) && (mouseX <= (width - width/4)) && (mouseY >= firstoption) && mouseY <= (height - (firstoption + firstoption/2)))
+  {
+    gamestate = 1;
+  }
+  
+  if((mouseX >= width/4) && (mouseX <= (width - width/4)) && (mouseY >= firstoption + (firstoption/3) * 2) && mouseY <= (height - (firstoption + (firstoption/3) * 2)))
+  {
+    gamestate = 2;
+  }
+    
 }
