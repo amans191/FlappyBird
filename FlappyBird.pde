@@ -37,11 +37,15 @@ void setup()
   //.activateBy(ControlP5.RELEASE);
   //;
     
-   gamestate = 1;
+   gamestate = 0;
+   
+   endpos = height;
 }
 
 //***************************************************************************
 
+int endpos;
+  
 PrintWriter output;
 int high_score;
 String name;
@@ -59,6 +63,8 @@ Bird birds;
 
 int gamestate;
 
+int firstoption = 150;
+
 //***************************************************************************
 
 void draw()
@@ -72,7 +78,13 @@ void draw()
   
   if (gamestate == 0)
   {
-    //name();
+    background(135, 206, 250);
+    
+    fill(255, 0, 0);
+    rect(width/4, firstoption, width/2, firstoption/2);
+    fill(255);
+    textSize(32);
+    text("Play Game!", width/4 + 50, firstoption + 50);
   }
   
   //if(mousePressed)
@@ -106,7 +118,7 @@ void draw()
         {
             EndScreen();
             stop();
-            gamestate = 2;
+            //gamestate = 2;
         }
       
         if( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )

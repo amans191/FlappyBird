@@ -1,7 +1,17 @@
 void EndScreen()
 {
-  //background(0, 24, 120);
+  stroke(255);
+  fill(225, 178, 86);
   
-  //birds.birdRender();
-  //birds.birdUpdate();
+  rect(width/4, endpos, width/2, height/2);
+  
+  for (int i = 0; i < height/4; i++)
+  {
+    endpos -= 5;
+  }
+  
+  if (endpos == height/4)
+  {
+    stop();
+  }
 }
