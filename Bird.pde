@@ -34,6 +34,7 @@ class Bird
   
   void birdUpdate()
   {
+    //bird motion 
     posy += 5;
     if (keyPressed)
     {

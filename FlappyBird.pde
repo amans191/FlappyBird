@@ -37,8 +37,9 @@ void setup()
 
 //***************************************************************************
 
-int endpos;
+int endpos; //for endscreen
 
+//for saving highscore
 PrintWriter output;
 int high_score;
 String name;
@@ -47,6 +48,7 @@ int score = 0;
 
 String textValue = "";
 
+//for bird
 int posx;
 int posy;
 
@@ -56,8 +58,10 @@ Bird birds;
 
 End ends;
 
+//different states throughout the game
 int gamestate;
 
+//menu rects
 int firstoption = 150;
 
 //***************************************************************************
@@ -85,14 +89,13 @@ void draw()
     fill(255);
     textSize(32);
     text("Highscore!", width/4 + firstoption/3, (firstoption * 2));
-
-    birds.birdRender();
-  }
+  }//end gamestate 0
 
   if (gamestate == 1)
   {
     background(135, 206, 250);
 
+    //so pipes appear every 2 seconds
     if ( frameCount % 120 == 0 )
     {
       Pipe newtoppipe = new Top_pipe();
@@ -100,6 +103,7 @@ void draw()
       blah.add(newtoppipe);
     }
 
+    //calling in bird
     birds.birdRender();
     birds.birdUpdate();
 
@@ -109,22 +113,26 @@ void draw()
       blah.get(i).update();
     }
 
+
+    //detecting collison
     for (int i = blah.size() - 1; i >= 0; i--)
     {
       Pipe blahblah = blah.get(i);
 
       if ( blahblah instanceof Pipe)
       {
+        //collision for top pipe
         if ( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
         {
-          player1.play();
-          gamestate = 2;
+          player1.play(); //sound
+          gamestate = 2;  //end screen
         }
 
+        //collison for bottom pipe
         if ( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
-          player1.play();
-          gamestate = 2;
+          player1.play(); //sound
+          gamestate = 2; //end screen
         }
       }
     }
@@ -134,11 +142,13 @@ void draw()
     //high_score = score;
   }//end gamestate == 1 
 
+  //end screen
   if (gamestate == 2)
   {
     ends.EndScreen();
     reset();
 
+    //go back to main menu
     if (keyPressed)
     {
       if (key == 's')
@@ -187,6 +197,7 @@ void points()
   {
     Pipe pipeScore = blah.get(i);
 
+    //seeing if bird passes pillar and then score increments by 1
     if ( posx > pipeScore.yi && posx < ( pipeScore.yi + pipeScore.pipeWidth ))
     {
       score = score + 1;
@@ -200,7 +211,7 @@ void points()
 }
 
 //***************************************************************************
-
+//saving score to an external file
 void save_score()
 {
   //output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
@@ -212,7 +223,7 @@ void save_score()
 }
 
 //***************************************************************************
-
+//reading in data
 void load_in_score()
 {
   String[] lines = loadStrings("data/score.txt"); 
@@ -235,7 +246,7 @@ void load_in_score()
 }
 
 //***************************************************************************
-
+//buttons for menu.
 void mousePressed()
 {
   //button to play game
