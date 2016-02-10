@@ -12,15 +12,6 @@ void setup()
 {
   size(550, 750);
 
-  //posx = width/3;
-  //posy = height/2;
-
-  //birds = new Bird();
-
-  //ends = new End();
-  
-  //highs = new Highscreen();
-
   minim = new Minim(this);
   player1 = minim.loadFile("explosion.wav");
 
@@ -32,7 +23,6 @@ void setup()
   minim = new Minim(this);
 
   reset();
-  //endpos = height/4;
 
   output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
 }
@@ -46,7 +36,7 @@ PrintWriter output;
 int high_score;
 String name;
 
-int score = 0;
+int score;
 
 String textValue = "";
 
@@ -78,7 +68,7 @@ void draw()
   if (gamestate == 0)
   {
     fill(255, 255, 0);
-    text("Crappy Bird!", width/4, 100);  
+    text("Crappy Bird!", width/4 + 20, 100);  
 
     //play game option
     fill(255, 0, 0);
@@ -150,7 +140,6 @@ void draw()
   if (gamestate == 2)
   {
     ends.EndScreen();
-    reset();
 
     //go back to main menu
     if (keyPressed)
@@ -158,6 +147,7 @@ void draw()
       if (key == 's')
       {
         gamestate = 0;
+        reset();
       }
     }
   }
@@ -174,6 +164,7 @@ void draw()
       if (key == 's')
       {
         gamestate = 0;
+        reset();
       }
     }
   }
@@ -186,6 +177,11 @@ void reset()
   posx = width/3;
   posy = height/2;
 
+  for (int i = 0; i < blah.size(); i++)
+  {
+    blah.remove(i);
+  }
+
   birds = new Bird();
 
   ends = new End();
@@ -193,6 +189,8 @@ void reset()
   highs = new Highscreen();
   
   endpos = height/4;
+  
+  score = 0;
 }
 
 //***************************************************************************
