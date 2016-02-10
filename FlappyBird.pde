@@ -31,6 +31,8 @@ void setup()
 
   reset();
   //endpos = height/4;
+
+  output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
 }
 
 //***************************************************************************
@@ -65,12 +67,10 @@ void draw()
   background(135, 206, 250);
   fill(255);
 
-  textSize(48);
-  //text(gui.get(Textfield.class,"Name").getText(), 360,130);
-  //text(textValue, 360,180);
-
   if (gamestate == 0)
   {
+    fill(255, 255, 0);
+    text("Crappy Bird!", width/4, 100);  
 
     //play game option
     fill(255, 0, 0);
@@ -85,6 +85,8 @@ void draw()
     fill(255);
     textSize(32);
     text("Highscore!", width/4 + firstoption/3, (firstoption * 2));
+
+    birds.birdRender();
   }
 
   if (gamestate == 1)
@@ -129,7 +131,7 @@ void draw()
 
     points();
 
-    high_score = score;
+    //high_score = score;
   }//end gamestate == 1 
 
   if (gamestate == 2)
@@ -146,13 +148,23 @@ void draw()
     }
   }
 
-  //if ( gamestate == 3)
-  //{
-  //  background(100, 100, 100);
-  //  text(high_score/15, width/2, height/2); // display text
-  //  //text(name, width/3,height/3);
-  //}
+  if ( gamestate == 3)
+  {
+    background(100, 100, 100);
+    text(high_score/15, width/2, height/2); // display text
+    //text(name, width/3,height/3);
+    
+    if (keyPressed)
+    {
+      if (key == 's')
+      {
+        gamestate = 0;
+      }
+    }
+  }
 }
+
+//***************************************************************************
 
 void reset()
 {
@@ -183,16 +195,15 @@ void points()
     //divide by 15 because the brd get 15 points everytime it is in the gap
     text(""+score/15, width/2, 600);
   }
+  
+  high_score = score;
 }
-
-//***************************************************************************
-
 
 //***************************************************************************
 
 void save_score()
 {
-  output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
+  //output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
 
   output.println(high_score + "," + name); // writes high_score to file
 
@@ -206,22 +217,24 @@ void load_in_score()
 {
   String[] lines = loadStrings("data/score.txt"); 
 
-  int score = 0;
+  int score1 = 0;
 
   for (int i = 0; i < lines.length; i++ )
   {
     String[] parts = lines[i].split(",");
-    score = parseInt(parts[0]);
+    score1 = parseInt(parts[0]);
     name = parts[1];
   }
 
   saveStrings("data/score.txt", lines);
 
-  if (score > 0)
+  if (score1 > 0)
   {
-    high_score = score;
+    high_score = score1;
   }
 }
+
+//***************************************************************************
 
 void mousePressed()
 {
