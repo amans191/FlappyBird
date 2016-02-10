@@ -4,47 +4,24 @@ class End
   {
     stroke(255);
     fill(225, 178, 86);
-    
+
     rect(width/4, endpos, width/2, height/2);
     
+    fill(0);
+    textSize(32);
+    text("You Scored: " + score/15, width/4 + 30, endpos + 50);
+
     fill(255, 0, 0);
     stroke(255);
     rect(width/4 + 10, height - (height/3), width/2 - 20, 50);
-    
+
     fill(255);
-    textSize(32);
-    text("Main Menu!", width/4 + 45, (height - (height/3) + 40));
-    
+    //textSize(32);
+    text("Main Menu: S", width/4 + 40, (height - (height/3) + 40));
+
     posx = width/2;
     posy = height/2;
-    
+
     birds.birdRender();
-    
-    if(keyPressed)
-    {
-      if(key == 's')
-      {
-        gamestate = 0;
-      }
-    }
   }
-  
-  void EndRender()
-  {
-    if(keyPressed)
-    {
-      if(key == ' ' )
-      {
-        gamestate = 0;
-      }
-    }
-  }
-    
-  //void mousePressed()
-  //{
-  // if( (mouseX > width/4 + 10) && (mouseX < width - (width/4 + 10)) && (mouseY > (height - (height/3))) && mouseY > (height - (height/3)) + 50);
-  // {
-  //   gamestate = 0;
-  // }
-  //}
 }
