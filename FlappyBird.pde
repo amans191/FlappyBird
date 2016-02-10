@@ -1,3 +1,11 @@
+import ddf.minim.*;
+import ddf.minim.signals.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+
+Minim minim;
+AudioPlayer player1;
+
 ArrayList<Pipe> blah = new ArrayList<Pipe>();
 
 void setup()
@@ -11,12 +19,15 @@ void setup()
 
   //ends = new End();
 
+  minim = new Minim(this);
+  player1 = minim.loadFile("explosion.wav");
+
   high_score = 0;
   load_in_score(); // loads score from txt file
 
   gamestate = 0;
 
-  //score = 0;
+  minim = new Minim(this);
 
   reset();
   //endpos = height/4;
@@ -79,7 +90,7 @@ void draw()
   if (gamestate == 1)
   {
     background(135, 206, 250);
-    
+
     if ( frameCount % 120 == 0 )
     {
       Pipe newtoppipe = new Top_pipe();
@@ -104,11 +115,13 @@ void draw()
       {
         if ( posx >= blahblah.yi && posy <= blahblah.yj && posx <= blahblah.yi + blahblah.pipeWidth || posy < 0)
         {
+          player1.play();
           gamestate = 2;
         }
 
         if ( posx >= blahblah.yi && posy >= (blahblah.gap + blahblah.yj) && posx <= blahblah.yi + blahblah.pipeWidth || posy > height )
         {
+          player1.play();
           gamestate = 2;
         }
       }
@@ -151,15 +164,13 @@ void reset()
   ends = new End();
 
   endpos = height/4;
-
-  //score = 0;
 }
 
 //***************************************************************************
 
 void points()
 {
- 
+
   for (int i = 0; i < blah.size(); i++)
   {
     Pipe pipeScore = blah.get(i);

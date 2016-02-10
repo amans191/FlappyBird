@@ -1,5 +1,12 @@
 class Bird
 { 
+  AudioPlayer audio;
+  
+  Bird()
+  {
+    audio = minim.loadFile("fart.wav");
+  }
+  
   void birdRender()
   {
     stroke(0);
@@ -30,6 +37,8 @@ class Bird
     posy += 5;
     if (keyPressed)
     {
+      audio.rewind();
+      audio.play();
       if(key == 'w')
       {
         {
