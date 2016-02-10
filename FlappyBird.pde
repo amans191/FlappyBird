@@ -18,6 +18,8 @@ void setup()
   //birds = new Bird();
 
   //ends = new End();
+  
+  //highs = new Highscreen();
 
   minim = new Minim(this);
   player1 = minim.loadFile("explosion.wav");
@@ -57,6 +59,8 @@ Pipe pipes;
 Bird birds;
 
 End ends;
+
+Highscreen highs;
 
 //different states throughout the game
 int gamestate;
@@ -160,8 +164,9 @@ void draw()
 
   if ( gamestate == 3)
   {
-    background(100, 100, 100);
-    text(high_score/15, width/2, height/2); // display text
+    background(135, 206, 250);
+    highs.highUpdate();
+    //text(high_score/15, width/2, height/2); // display text
     //text(name, width/3,height/3);
     
     if (keyPressed)
@@ -184,7 +189,9 @@ void reset()
   birds = new Bird();
 
   ends = new End();
-
+  
+  highs = new Highscreen();
+  
   endpos = height/4;
 }
 
