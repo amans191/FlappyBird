@@ -182,7 +182,7 @@ void reset()
   posx = width/3;
   posy = height/2;
 
-  for (int i = 0; i < blah.size(); i++)
+  for (int i = 0; i < blah.size(); ++i)
   {
     blah.remove(i);
   }
