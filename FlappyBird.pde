@@ -15,7 +15,6 @@ void setup()
   minim = new Minim(this);
   player1 = minim.loadFile("explosion.wav");
 
-  high_score = 0;
   load_in_score(); // loads score from txt file
 
   gamestate = 0;
@@ -23,8 +22,6 @@ void setup()
   minim = new Minim(this);
 
   reset();
-
-  output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
 }
 
 //***************************************************************************
@@ -34,7 +31,6 @@ int endpos; //for endscreen
 //for saving highscore
 PrintWriter output;
 int high_score;
-String name;
 
 int score;
 
@@ -57,6 +53,8 @@ int gamestate;
 
 //menu rects
 int firstoption = 150;
+
+String[] lines;
 
 //***************************************************************************
 
@@ -168,6 +166,13 @@ void draw()
       }
     }
   }
+  
+  load_in_score();
+  
+  if(score > high_score)
+  {
+    high_score = score;
+  }
 }
 
 //***************************************************************************
@@ -211,43 +216,33 @@ void points()
     //divide by 15 because the brd get 15 points everytime it is in the gap
     text(""+score/15, width/2, 600);
   }
-  
-  high_score = score;
 }
 
 //***************************************************************************
 //saving score to an external file
 void save_score()
 {
-  //output = createWriter("data/score.txt"); // creates a file called score.txt in your data folder
+  output = createWriter("score.txt"); // creates a file called score.txt in your data folder
 
-  output.println(high_score + "," + name); // writes high_score to file
+  output.println(high_score); // writes high_score to file
 
   output.flush(); // Writes the remaining data to the file
   output.close(); // Finishes the file
+  
+
 }
 
 //***************************************************************************
 //reading in data
 void load_in_score()
 {
-  String[] lines = loadStrings("data/score.txt"); 
+  lines = loadStrings("score.txt"); 
+  
+  float f = Float.parseFloat(lines[0]);
 
-  int score1 = 0;
-
-  for (int i = 0; i < lines.length; i++ )
-  {
-    String[] parts = lines[i].split(",");
-    score1 = parseInt(parts[0]);
-    name = parts[1];
-  }
-
-  saveStrings("data/score.txt", lines);
-
-  if (score1 > 0)
-  {
-    high_score = score1;
-  }
+  high_score = (int)f;
+  
+  save_score();
 }
 
 //***************************************************************************
