@@ -40,7 +40,7 @@ class Bird
     {
       audio.rewind();
       audio.play();
-      if(key == 'w')
+      if(key == 'W' || key == 'w')
       {
         {
           posy -= 20;
